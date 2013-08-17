@@ -7,7 +7,6 @@
 var productBrand = "Vizio"; 							// String Variable
 var vizioStock = 25;									// Number Variable
 var vizioSold = 25;										// Number Variable
-
 var zeroStock = false;									// Boolean Value
 var checkOut = [" Register for insurance", 				// Array // Argumnent To Call	
 			 	" Offer a warranty", 
@@ -25,10 +24,10 @@ console.log("Today we have a total of " + vizioStock + " " + productBrand + " te
 // My Function : (Using String and Concatenation)
 var inventoryStatus = function () {
 	var remainingStock = (vizioStock - vizioSold);
-	console.log("We have only " + remainingStock + " " + productBrand + " remaining!" );
+	console.log("We have only " + (remainingStock-=2) + " " + productBrand + " remaining!" );
 };
 
-// For Loop
+// My Function : Array & Number and use them in a for loop;
 for (var i=0; i < checkOut.length; i++) {
 	console.log( checkOut[i] );
 };
@@ -36,9 +35,9 @@ for (var i=0; i < checkOut.length; i++) {
 // My Function : (procedure)
 var sellProduct = function () {
 	var checkOutprocess = 0;
-	for (vizioSold = 0; vizioSold < vizioStock; vizioStock-=5) {
+	for (vizioSold = 0; vizioSold < vizioStock; vizioStock-=2) {
 		console.log("We only have " + vizioStock + " left!");
-	    console.log("We succesfully went through the 5 step checkout process " + (checkOutprocess+=5) + " times!");
+	    console.log("We succesfully went through the 5 step checkout process " + (checkOutprocess+=2) + " times!");  
 	inventoryStatus();
 		};
 };
@@ -51,13 +50,12 @@ while (vizioStock >=25){
 var soldOut = function (zeroStock) {
 	zeroStock = (vizioSold = 25 && vizioStock <= 0);
 	console.log("it is " + zeroStock + " that we are completly sold out of " + productBrand + " products!" );
-	console.log("Bonuses for the staff!");
+	console.log("As a result, BONUSES for the staff!");
 	};
 
 soldOut();
 
 // My Function w/ Argument Call
-
 
 var quickCheckout = function (qCheckout) {
 	qCheckout = [" Accept Payment", " by no longer accepting personal checks"," having lengthy conversations"];
@@ -69,11 +67,18 @@ var quickCheckout = function (qCheckout) {
 
 quickCheckout();
 
-// My Function : Array & Number and use them in a for loop;
+// My Function w/ return 
+var dailySpecial = function(specialdiscount) {
+	var currentHour = (new Date()).getHours(),currentSpecials, announcement;
+	if (currentHour < 12) {currentSpecials = " Matinae Specials Still Live"; }
+	else if (currentHour < 17) { currentSpecials = " Afternoon Price Cuts Still Live"; }
+	else { currentSpecials = "Sorry are sale are completed, check back with us tomorrow!"; }
+announcement = "Todays a great day to shop " + currentSpecials + ", get a phenomenal " + specialdiscount + "% off!";
 
-
-
-
+return announcement;
+}; 
+var announceSpecials = dailySpecial("30");
+console.log(announceSpecials);
 
 
 
